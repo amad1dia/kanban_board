@@ -5,23 +5,24 @@
     <div class="col-md">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>A Faire</mat-card-title>
         </mat-card-header>
         <mat-card class="example-card">
-          <mat-card-content  (click)="open(content_details)">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Awa Diaby</mat-card-title>
+            <mat-card-subtitle>Role</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content (click)="open(content_details)">
             <h1>Titre</h1>
             <p>
               note
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button class="btn btn-primary">Edit <fa-icon [icon]="faEdit"></fa-icon></button>
-            <button class="btn btn-danger">Delete <fa-icon [icon]="faTrashAlt"></fa-icon></button>
-
-            <button class="btn btn-primary">
-              <fa-icon [icon]="faUserClock"></fa-icon>
+            <button class="btn btn-primary" (click)="open(content_edit)">Edit <fa-icon [icon]="faEdit"></fa-icon>
             </button>
+            <button class="btn btn-danger" (click)="openDialog()">Delete <fa-icon [icon]="faTrashAlt"></fa-icon></button>
           </mat-card-actions>
         </mat-card>
         <hr>
@@ -35,8 +36,6 @@
           <mat-card-actions>
             <button mdbBtn class="btn btn-primary">Modifier</button>
             <button class="btn btn-danger">Delete</button>
-
-
           </mat-card-actions>
         </mat-card>
         <mat-card-actions>
@@ -53,20 +52,15 @@
     <div class="col-md">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>En Cours</mat-card-title>
         </mat-card-header>
-
       </mat-card>
     </div>
     <div class="col-md">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>Réaliser</mat-card-title>
         </mat-card-header>
-
-
       </mat-card>
     </div>
   </div>
@@ -95,6 +89,22 @@
   </div>
   <div class="modal-body">
     <app-details></app-details>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermez</button>
+  </div>
+</ng-template>
+
+<!-- Modal pour editer une fiche -->
+<ng-template #content_edit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editer la fiche</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-update></app-update>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermez</button>
