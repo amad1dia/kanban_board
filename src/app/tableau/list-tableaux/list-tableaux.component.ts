@@ -8,6 +8,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./list-tableaux.component.css']
 })
 export class ListTableauxComponent implements OnInit {
+  
 
   constructor(private modalService: NgbModal) { }
 
