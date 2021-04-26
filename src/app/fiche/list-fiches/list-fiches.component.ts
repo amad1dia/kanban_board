@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { faEdit, faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt, faPlus, faUserClock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-fiches',
@@ -11,6 +11,7 @@ export class ListFichesComponent implements OnInit {
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
   faPlus = faPlus;
+  faUserClock = faUserClock;
 
   constructor(private modalService: NgbModal) { }
 

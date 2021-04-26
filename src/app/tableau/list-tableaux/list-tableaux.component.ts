@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -8,12 +9,15 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./list-tableaux.component.css']
 })
 export class ListTableauxComponent implements OnInit {
-  
 
-  constructor(private modalService: NgbModal) { }
+
+  constructor(
+    private modalService: NgbModal,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       //this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -22,4 +26,8 @@ export class ListTableauxComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openFiche(): void {
+    console.log("go to fiche")
+    this.router.navigate(['/fiches']);
+  }
 }
