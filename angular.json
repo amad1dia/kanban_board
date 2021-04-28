@@ -63,7 +63,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "kanban-front:build"
+            "browserTarget": "kanban-front:build",
+            "proxyConfig": "src/proxy.conf.json"
+
           },
           "configurations": {
             "production": {

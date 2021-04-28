@@ -6,7 +6,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { ListTableauxComponent } from './tableau/list-tableaux/list-tableaux.com
 import { AddFicheComponent } from './fiche/add-fiche/add-fiche.component';
 import { AddTableauComponent } from './tableau/add-tableau/add-tableau.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MDBBootstrapModule.forRoot(),
     MatFormFieldModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
