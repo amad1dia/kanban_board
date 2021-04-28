@@ -26,6 +26,7 @@ export class ListTableauxComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.getTableaux();
   }
 
   openFiche(): void {
@@ -33,7 +34,7 @@ export class ListTableauxComponent implements OnInit {
     this.router.navigate(['/fiches']);
   }
 
-  getTableau() {
+  getTableaux() {
     this.tableauService.getTableaux().subscribe((data) => {
       console.log(data)
     })
