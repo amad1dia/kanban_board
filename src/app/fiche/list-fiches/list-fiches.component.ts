@@ -6,6 +6,10 @@ import { FicheService } from 'src/app/service/fiche.service';
 import { TableauService } from 'src/app/service/tableau.service';
 import { Section } from 'src/app/models/tableau';
 import { ActivatedRoute } from '@angular/router';
+import { AddFicheComponent } from '../add-fiche/add-fiche.component';
+import { Fiche } from 'src/app/models/fiche';
+import { DetailsComponent } from '../details/details.component';
+import { UpdateComponent } from '../update/update.component';
 
 
 export interface DialogData {
@@ -34,23 +38,42 @@ export class ListFichesComponent implements OnInit {
     private ficheService: FicheService,
     private tableauService: TableauService,
     private routeActive: ActivatedRoute) {
-    
+
   }
 
   open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    let modalRef = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       //this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
-  openDialog(): void {
+  openModal(sectionId: any) {
+    console.log(sectionId)
+    let modalRef = this.modalService.open(AddFicheComponent);
+    modalRef.componentInstance.sectionId = sectionId;
+  }
+
+  openDetails(fiche: Fiche) {
+    console.log(fiche)
+    let modalRef = this.modalService.open(DetailsComponent);
+    modalRef.componentInstance.fiche = fiche;
+  }
+
+  openEditPage(fiche: Fiche) {
+    let modalRef = this.modalService.open(UpdateComponent);
+    modalRef.componentInstance.fiche = fiche;
+  }
+
+  openDialog(ficheId: any): void {
     const dialogRef = this.dialog.open(DialogDelete, {
       width: '250px',
+      data: { id: ficheId }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.getSections();
       console.log('The dialog was closed');
     });
   }
@@ -67,8 +90,8 @@ export class ListFichesComponent implements OnInit {
 
   getSections(): void {
     this.tableauService.getTableauById(this.tableauId).subscribe((data) => {
+      this.sections = []
       data.sections.forEach(value => this.sections.push(value));
-      console.log(this.sections)
     })
   }
 }
@@ -89,8 +112,10 @@ export class DialogDelete {
   }
 
   delete(id: any): void {
-    this.ficheService.deleteFiche(id);
+    this.ficheService.deleteFiche(id).subscribe(resp => {
+      this.dialogRef.close();
+    }, () => {
+      this.dialogRef.close();
+    });
   }
-
-
 }

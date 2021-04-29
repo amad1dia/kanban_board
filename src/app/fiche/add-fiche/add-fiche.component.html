@@ -1,26 +1,48 @@
-<mat-card-header class="info-color white-text text-center py-4">
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Formulaire d'ajout d'une fiche</mat-card-title>
-  </mat-card-header>
-  <mat-card class="example-card">
-    <!-- Default form contact -->
-    <form class="text-center border border-light p-5">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Enregistrer un nouveau</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
 
-      <!-- Name -->
-      <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Libelle">
-      <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="lieu">
-      <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Url">
-      <select class="browser-default custom-select mb-4">
-        <option value="1" selected>1</option>
-        <option value="2">2</option>
-        <option value="2">3</option>
-      </select>
-        <textarea class="form-control mb-4" placeholder="Ajouter une note"></textarea>
-      <input type="date" class="form-control mb-4" placeholder="01-01-2000"/>
+    <mat-card-header class="info-color white-text text-center py-4">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Formulaire d'ajout d'une fiche</mat-card-title>
+    </mat-card-header>
+    <mat-card class="example-card">
+      <!-- Default form contact -->
+      <form class="text-center border border-light p-5" [formGroup]="addFicheForm" (ngSubmit)="onSubmit()">
 
-      <!-- Send button -->
-      <button mdbBtn color="info" block="true" type="submit">Send</button>
+        <!-- Name -->
+        <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Libelle"
+          formControlName="libelle">
+        <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="lieu"
+          formControlName="lieu">
+        <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Url"
+          formControlName="url">
+        <select class="browser-default custom-select mb-4" formControlName="duree">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="2">3</option>
+        </select>
+        <textarea class="form-control mb-4" placeholder="Ajouter une note" formControlName="note"></textarea>
+        <input type="date" class="form-control mb-4" placeholder="01-01-2000" formControlName="date" />
 
-    </form>
-  </mat-card>
-  <!-- Default form contact -->
+        <select [ngModel]="selectedCollaborateur" (ngModelChange)="onChange($event)"
+          class="browser-default custom-select mb-4" formControlName="collaborateur">
+          <option *ngFor="let collaborateur of collaborateurs" [ngValue]="collaborateur">
+            {{ collaborateur.prenom }} {{ collaborateur.nom }}
+          </option>
+        </select>
+        <!-- Send button -->
+        <button mdbBtn color="info" block="true" type="submit">Send</button>
+
+      </form>
+    </mat-card>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="refresh()">Fermez</button>
+  </div>
+<!-- Default form contact -->

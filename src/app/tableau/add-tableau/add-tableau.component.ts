@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Tableau } from 'src/app/models/tableau';
 import { TableauService } from 'src/app/service/tableau.service';
-import { FormBuilder } from '@angular/forms';
-
-
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-tableau',
@@ -15,8 +13,8 @@ export class AddTableauComponent implements OnInit {
   model: NgbDateStruct;
   tableau: Tableau = new Tableau();
   addTableauForm = this.formBuilder.group({
-    nom: '',
-    description: ''
+    nom: ['', Validators.required],
+    description: ['', Validators.required]
   });
 
   constructor(private tableauService: TableauService,

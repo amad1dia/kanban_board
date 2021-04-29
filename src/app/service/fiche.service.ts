@@ -6,7 +6,6 @@ import { Fiche } from '../models/fiche';
   providedIn: 'root'
 })
 export class FicheService {
-
   constructor(private http: HttpClient) { }
 
   addFiche(fiche: Fiche) {
@@ -21,5 +20,10 @@ export class FicheService {
   getFichesByTableauId(id : any){
     return this.http
     .get<Fiche[]>(`/api/fiches/${id}`);
+  }
+
+  updateFiche(id: any, fiche: Fiche) {
+    console.log(fiche)
+    return this.http.put<Fiche>(`/api/fiche/${id}`, fiche);
   }
 }

@@ -13,23 +13,24 @@
             <mat-card-title>{{fiche.collaborateurFullName}}</mat-card-title>
             <mat-card-subtitle>{{fiche.collaborateurRole}}</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-content (click)="open(content_details)">
+          <mat-card-content (click)="openDetails(fiche)">
             <h1>{{fiche.libelle}}</h1>
             <div class="note">
               {{fiche.note}}
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button class="btn btn-primary" (click)="open(content_edit)">Edit <fa-icon [icon]="faEdit"></fa-icon>
+            <button class="btn btn-primary" (click)="openEditPage(fiche)">Edit <fa-icon [icon]="faEdit"></fa-icon>
             </button>
-            <button class="btn btn-danger" (click)="openDialog()">Delete <fa-icon [icon]="faTrashAlt"></fa-icon></button>
+            <button class="btn btn-danger" (click)="openDialog(fiche.id)">Delete <fa-icon [icon]="faTrashAlt"></fa-icon>
+            </button>
           </mat-card-actions>
         </mat-card>
         <hr>
         <mat-card-actions>
           <section>
             <div class="example-button-row">
-              <button mdbBtn class="btn btn-primary" (click)="open(content)">Ajouter Fiche <fa-icon [icon]="faPlus">
+              <button mdbBtn class="btn btn-primary" (click)="openModal(section.id)">Ajouter Fiche <fa-icon [icon]="faPlus">
                 </fa-icon>
               </button>
             </div>
@@ -39,20 +40,7 @@
     </div>
   </div>
 </div>
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Enregistrer un nouveau</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <app-add-fiche></app-add-fiche>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermez</button>
-  </div>
-</ng-template>
+
 <!-- Modal pour afficher les detals d'une fiche -->
 <ng-template #content_details let-modal>
   <div class="modal-header">

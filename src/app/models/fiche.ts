@@ -1,4 +1,5 @@
 export class Fiche {
+    id: string;
     libelle: string;
     lieu: string;
     url: string;
@@ -9,4 +10,13 @@ export class Fiche {
     commit: string;
     collaborateurRole: string;
     sectionStatus: string;
+    collaborateur: Collaborateur;
+    section: Section;
+}
+export class Collaborateur {
+    id: any;
+}
+
+export class Section {
+    id: any;
 }

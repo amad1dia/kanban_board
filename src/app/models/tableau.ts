@@ -9,6 +9,7 @@ export class Tableau {
 }
 
 export interface Section {
+    id: any;
     status: string;
     fiches: Fiche[];
 }
