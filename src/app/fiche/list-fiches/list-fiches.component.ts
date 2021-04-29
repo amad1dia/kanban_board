@@ -3,6 +3,9 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { faEdit, faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FicheService } from 'src/app/service/fiche.service';
+import { TableauService } from 'src/app/service/tableau.service';
+import { Section } from 'src/app/models/tableau';
+import { ActivatedRoute } from '@angular/router';
 
 
 export interface DialogData {
@@ -19,11 +22,20 @@ export class ListFichesComponent implements OnInit {
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
   faPlus = faPlus;
+  sections: Section[] = [];
+  tableauId: any;
+  sectionRealise: Section;
+  sectionEnCours: Section;
+  sectionAFaire: Section;
 
   constructor(
     private modalService: NgbModal,
     public dialog: MatDialog,
-    private ficheService: FicheService) { }
+    private ficheService: FicheService,
+    private tableauService: TableauService,
+    private routeActive: ActivatedRoute) {
+    
+  }
 
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -44,10 +56,20 @@ export class ListFichesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let id = this.routeActive.snapshot.paramMap.get('tableauId');
+    this.tableauId = id;
+    this.getSections();
   }
 
   delete(id: any): void {
     this.ficheService.deleteFiche(id);
+  }
+
+  getSections(): void {
+    this.tableauService.getTableauById(this.tableauId).subscribe((data) => {
+      data.sections.forEach(value => this.sections.push(value));
+      console.log(this.sections)
+    })
   }
 }
 
@@ -69,5 +91,6 @@ export class DialogDelete {
   delete(id: any): void {
     this.ficheService.deleteFiche(id);
   }
+
 
 }

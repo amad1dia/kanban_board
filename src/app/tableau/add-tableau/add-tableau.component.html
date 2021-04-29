@@ -4,11 +4,12 @@
 </mat-card-header>
 <mat-card class="example-card">
   <!-- Default form contact -->
-  <form class="text-center border border-light p-5">
+  <form [formGroup]="addTableauForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
 
     <!-- Name -->
-    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nom du tableau">
-    <input type="date" class="form-control mb-4" placeholder="01-01-2000"/>
+    <input type="text" formControlName="nom"  id="defaultContactFormName" class="form-control mb-4" placeholder="Nom du tableau">
+    <input type="text" formControlName="description"  id="defaultContactFormName" class="form-control mb-4" placeholder="Description">
+    <input type="date"  class="form-control mb-4" placeholder="01-01-2000"/>
 
 
     <!-- Subject -->

@@ -2,22 +2,22 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md">
+    <div class="col-md" *ngFor="let section of sections">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>A Faire</mat-card-title>
+          <mat-card-title>{{section.status}}</mat-card-title>
         </mat-card-header>
-        <mat-card class="example-card">
+        <mat-card class="example-card" *ngFor="let fiche of section.fiches">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Awa Diaby</mat-card-title>
-            <mat-card-subtitle>Role</mat-card-subtitle>
+            <mat-card-title>{{fiche.collaborateurFullName}}</mat-card-title>
+            <mat-card-subtitle>{{fiche.collaborateurRole}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content (click)="open(content_details)">
-            <h1>Titre</h1>
-            <p>
-              note
-            </p>
+            <h1>{{fiche.libelle}}</h1>
+            <div class="note">
+              {{fiche.note}}
+            </div>
           </mat-card-content>
           <mat-card-actions>
             <button class="btn btn-primary" (click)="open(content_edit)">Edit <fa-icon [icon]="faEdit"></fa-icon>
@@ -26,18 +26,6 @@
           </mat-card-actions>
         </mat-card>
         <hr>
-        <mat-card class="example-card">
-          <mat-card-content>
-            <h1>
-              Scrapper les données d'une page
-            </h1>
-            <p>note</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mdbBtn class="btn btn-primary">Modifier</button>
-            <button class="btn btn-danger">Delete</button>
-          </mat-card-actions>
-        </mat-card>
         <mat-card-actions>
           <section>
             <div class="example-button-row">
@@ -47,20 +35,6 @@
             </div>
           </section>
         </mat-card-actions>
-      </mat-card>
-    </div>
-    <div class="col-md">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>En Cours</mat-card-title>
-        </mat-card-header>
-      </mat-card>
-    </div>
-    <div class="col-md">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>Réaliser</mat-card-title>
-        </mat-card-header>
       </mat-card>
     </div>
   </div>

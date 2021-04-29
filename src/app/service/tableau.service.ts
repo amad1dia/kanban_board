@@ -15,12 +15,15 @@ constructor(private http: HttpClient) { }
   }
 
   addTableau(tableau: Tableau) {
-    console.log(tableau)
-    return this.http.post<Tableau>('/api/tableau', tableau);
+    return this.http.post<String>('/api/tableau', tableau);
   }
 
   deleteTableau(id: any) {
     return this.http.delete<Tableau>(`/api/tableau/${id}`);
+  }
+
+  getTableauById(id: any){
+    return this.http.get<Tableau>(`/api/tableau/${id}`)
   }
 
 }

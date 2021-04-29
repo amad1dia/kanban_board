@@ -5,7 +5,7 @@ import { ListFichesComponent } from './fiche/list-fiches/list-fiches.component';
 
 const routes: Routes = [
   { path: '', component: ListTableauxComponent },
-  { path: 'fiches', component: ListFichesComponent },
+  { path: 'fiches/:tableauId', component: ListFichesComponent },
 ];
 
 @NgModule({

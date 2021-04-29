@@ -9,66 +9,23 @@
 </h2>
 <div class="container">
   <div class="row">
-    <div class="col-md">
-      <mat-card class="example-card"  (click)="openFiche()">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button class="btn btn-primary">Modifier</button>
-          <button class="btn btn-danger">Delete</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-    <div class="col-md">
+    <div class="col-md" *ngFor="let tableau of tableaux">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          <mat-card-title>{{tableau.nom}}</mat-card-title>
+          <mat-card-subtitle>{{tableau.dateCreation }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"
+          (click)="openFiche(tableau.id)">
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            {{tableau.description}}
           </p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button>Modifier</button>
-          <button class="btn btn-danger">Delete</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-    <div class="col-md">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>Modifier</button>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger" (click)="openDialog(tableau.id)">Delete</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -86,7 +43,7 @@
     <app-add-tableau></app-add-tableau>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermez</button>
   </div>
 </ng-template>
 
