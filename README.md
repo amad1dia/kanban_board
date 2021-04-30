@@ -1,4 +1,5 @@
 # KanbanFront
+## Auteurs : Awa DIABY & Amadou DIA
 
 Ce projet est développé project en [Angular] version 11.2.6.
 
