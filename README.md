@@ -16,8 +16,8 @@ Ce projet est développé project en [Angular] version 11.2.6.
 Se référer au readme du backend du projet : https://github.com/awadiaby/JaxRSOpenAPI.git
 ## Lancement de l'application
 
-Tapez la commande `ng serve` dans votre terminal (faut se placer dans le projet). Puis ouvrir dans un navigateur l'url `http://localhost:4200/`.
-Vous pouvez directement lancer l'application en tapant la commande `ng serve --open`
+Tapez la commande `ng serve` dans votre terminal (faut se placer à la racine du projet). Puis ouvrir dans un navigateur l'url `http://localhost:4200/`.
+La commande suivante `ng serve --open` lance l'application et l'ouvre directement dans un navigateur.
 
 ## Rendu de l'application
 ### Page d'accueil : Liste des tableaux
