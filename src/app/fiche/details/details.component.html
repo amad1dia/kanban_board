@@ -1,45 +1,48 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Détails de la fiche</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-
-  <div>
-    Libellé : {{fiche.libelle}}
+<mat-card-header class="info-color white-text text-center py-4">
+  <mat-card-title>Details de la fiche</mat-card-title>
+</mat-card-header>
+<mat-card class="example-card">
+  <div class="modal-body">
+    <div class="form-control mb-4">
+      Libellé : {{fiche.libelle}}
+    </div>
+    <div class="form-control mb-4">
+      Url : {{fiche.url}}
+    </div>
+    <div class="form-control mb-4">
+      Lieu : {{fiche.lieu}}
+    </div>
+    <div class="form-control mb-4">
+      Date de création : {{fiche.dateCreation}}
+    </div>
+    <div>
+      <textarea>{{fiche.note}}</textarea>
+    </div>
+    <div class="form-control mb-4">
+      Durée de la tache : {{fiche.dureeTache}}
+    </div>
+    <div class="form-control mb-4">
+      Collaborateur : {{fiche.collaborateurFullName}}
+    </div>
+    <div>
+      <select class="browser-default custom-select mb-4">
+        <option value="1" selected>Tag 1</option>
+        <option value="2">Tag 2</option>
+        <option value="2">Tag 3</option>
+      </select>
+      <select class="browser-default custom-select mb-4">
+        <option value="1" selected>Changer statut</option>
+        <option value="2">Tag 2</option>
+        <option value="2">Tag 3</option>
+      </select>
+    </div>
   </div>
-  <div>
-    Url : {{fiche.url}}
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Save click')">Fermez</button>
   </div>
-  <div>
-    Lieu : {{fiche.lieu}}
-  </div>
-  <div>
-    Date de création : {{fiche.dateCreation}}
-  </div>
-  <div>
-    <textarea>{{fiche.note}}</textarea>
-  </div>
-  <div>
-    Durée de la tache : {{fiche.dureeTache}}
-  </div>
-  <div>
-    Collaborateur : {{fiche.collaborateurFullName}}
-  </div>
-  <div>
-    <select class="browser-default custom-select mb-4">
-      <option value="1" selected>Tag 1</option>
-      <option value="2">Tag 2</option>
-      <option value="2">Tag 3</option>
-    </select>
-    <select class="browser-default custom-select mb-4">
-      <option value="1" selected>Changer statut</option>
-      <option value="2">Tag 2</option>
-      <option value="2">Tag 3</option>
-    </select>
-  </div>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Save click')">Fermez</button>
-</div>
+</mat-card>

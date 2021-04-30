@@ -26,4 +26,9 @@ constructor(private http: HttpClient) { }
     return this.http.get<Tableau>(`/api/tableau/${id}`)
   }
 
+  updateTableau(id: any, tableau: Tableau){
+    return this.http.put<Tableau>(`/api/tableau/${id}`, tableau)
+
+  }
+
 }

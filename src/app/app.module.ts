@@ -20,17 +20,23 @@ import { AddFicheComponent } from './fiche/add-fiche/add-fiche.component';
 import { AddTableauComponent } from './tableau/add-tableau/add-tableau.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http'
+import { UpdateTableauComponent } from './tableau/update-tableau/update-tableau.component';
+import { AddSectionComponent } from './add-section/add-section.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     DetailsComponent,
     UpdateComponent,
     ListFichesComponent,
     ListTableauxComponent,
     AddFicheComponent,
-    AddTableauComponent
-  ],
+    AddTableauComponent,
+    UpdateTableauComponent,
+      AddSectionComponent,
+      SearchComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

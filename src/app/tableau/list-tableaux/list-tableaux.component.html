@@ -1,13 +1,7 @@
-<section>
-  <div class="example-button-row">
-    <button mat-raised-button color="primary" (click)="open(content)">Ajouter un
-      tableau</button>
-  </div>
-</section>
-<h2>
+<h1 style="text-align: center">
   Liste des tableaux
-</h2>
-<div class="container">
+</h1>
+<div style="margin: 1em" >
   <div class="row">
     <div class="col-md" *ngFor="let tableau of tableaux">
       <mat-card class="example-card">
@@ -17,17 +11,22 @@
           <mat-card-subtitle>{{tableau.dateCreation }}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"
-          (click)="openFiche(tableau.id)">
+          (click)="openFiche(tableau.id + '-' + tableau.nom)">
         <mat-card-content>
           <p>
             {{tableau.description}}
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>Modifier</button>
+          <button mat-button (click)="openModal(tableau)">Modifier</button>
           <button class="btn btn-danger" (click)="openDialog(tableau.id)">Delete</button>
         </mat-card-actions>
       </mat-card>
+    </div>
+    <div class="example-button-row">
+      <button class="plus" (click)="open(content)"><fa-icon [icon]="faPlus" class="fa-3x">
+        </fa-icon>
+      </button>
     </div>
   </div>
 </div>

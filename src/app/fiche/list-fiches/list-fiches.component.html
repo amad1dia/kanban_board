@@ -1,4 +1,15 @@
-<p>Tableau 1</p>
+<p>{{tableauNom}}</p>
+
+<links>
+  <!-- Search form -->
+  <div class="form-inline">
+    <div class="md-form my-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Rechercher" aria-label="search" [(ngModel)] ="formSearchFiche.libelle" (keyup)= "rechercherFiche(formSearchFiche.libelle)">
+    </div>
+  </div>
+  <!-- Links -->
+</links>
+<!-- Collapsible content -->
 
 <div class="container">
   <div class="row">
@@ -30,7 +41,8 @@
         <mat-card-actions>
           <section>
             <div class="example-button-row">
-              <button mdbBtn class="btn btn-primary" (click)="openModal(section.id)">Ajouter Fiche <fa-icon [icon]="faPlus">
+              <button mdbBtn class="btn btn-primary" (click)="openModal(section.id)">Ajouter une fiche <fa-icon
+                  [icon]="faPlus">
                 </fa-icon>
               </button>
             </div>
@@ -38,12 +50,18 @@
         </mat-card-actions>
       </mat-card>
     </div>
+    <div class="example-button-row">
+      <button mdbBtn class="btn btn-primary" (click)="openAddSection(tableauId)">Ajouter une section <fa-icon
+          [icon]="faPlus">
+        </fa-icon>
+      </button>
+    </div>
   </div>
 </div>
 
 <!-- Modal pour afficher les detals d'une fiche -->
 <ng-template #content_details let-modal>
-  <div class="modal-header">
+  <div class="info-color white-text text-center py-4">
     <h4 class="modal-title" id="modal-basic-title">Détails de la fiche</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>

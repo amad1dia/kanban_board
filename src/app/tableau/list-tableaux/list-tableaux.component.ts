@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Tableau } from 'src/app/models/tableau';
-import { FicheService } from 'src/app/service/fiche.service';
+import {faPlus } from '@fortawesome/free-solid-svg-icons';
 import { TableauService } from 'src/app/service/tableau.service';
+import { UpdateTableauComponent } from '../update-tableau/update-tableau.component';
 
 export interface DialogData {
   id: any;
@@ -16,7 +17,8 @@ export interface DialogData {
   styleUrls: ['./list-tableaux.component.css']
 })
 export class ListTableauxComponent implements OnInit {
-  tableaux: Tableau[] = []
+  tableaux: Tableau[] = [];
+  faPlus = faPlus;
 
   constructor(
     private modalService: NgbModal,
@@ -35,6 +37,11 @@ export class ListTableauxComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getTableaux();
+  }
+
+  openModal(tableau: any) {
+    let modalRef = this.modalService.open(UpdateTableauComponent);
+    modalRef.componentInstance.tableau = tableau;
   }
 
   openFiche(tableauId: any): void {

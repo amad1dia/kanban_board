@@ -1,3 +1,22 @@
-<p>
-  update-tableau works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Mise à jour de la fiche</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <mat-card class="example-card">
+    <!-- Default form contact -->
+    <!-- Name -->
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" [(ngModel)]="tableau.nom"
+      placeholder="libelle">
+    <textarea class="form-control mb-4" [(ngModel)]="tableau.description" placeholder="note"></textarea>
+
+    <!-- Send button -->
+    <button mdbBtn color="info" block="true" (click)="save()">Send</button>
+  </mat-card>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="refresh()">Fermez</button>
+  </div>
+</div>
+<!-- Default form contact -->

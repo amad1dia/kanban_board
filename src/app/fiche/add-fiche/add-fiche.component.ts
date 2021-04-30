@@ -35,7 +35,6 @@ export class AddFicheComponent implements OnInit {
     private formBuilder: FormBuilder,
     private collaborateurService: CollaborateurService,
     public activeModal: NgbActiveModal,
-    private location: Location,
     private router: Router) {
     this.getCollaborateurs();
   }

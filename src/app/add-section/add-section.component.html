@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Enregistrer un nouveau</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <mat-card-header class="info-color white-text text-center py-4">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Formulaire d'ajout d'une section</mat-card-title>
+  </mat-card-header>
+  <mat-card class="example-card">
+    <!-- Default form contact -->
+    <form class="text-center border border-light p-5" [formGroup]="addSectionForm" (ngSubmit)="onSubmit()">
+
+      <!-- Name -->
+
+      <select class="browser-default custom-select mb-4" formControlName="status">
+        <option value="1" selected>EN_ATTENTE</option>
+        <option value="2">EN_COURS</option>
+        <option value="3">REALISE</option>
+      </select>
+      <!-- Send button -->
+      <button mdbBtn color="info" block="true" type="submit">Send</button>
+
+    </form>
+  </mat-card>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="refresh()">Fermez</button>
+</div>
+<!-- Default form contact -->

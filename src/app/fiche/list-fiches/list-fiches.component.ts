@@ -10,6 +10,8 @@ import { AddFicheComponent } from '../add-fiche/add-fiche.component';
 import { Fiche } from 'src/app/models/fiche';
 import { DetailsComponent } from '../details/details.component';
 import { UpdateComponent } from '../update/update.component';
+import { AddSectionComponent } from 'src/app/add-section/add-section.component';
+import { FormSearchFiche } from 'src/app/search/search.component';
 
 
 export interface DialogData {
@@ -28,9 +30,8 @@ export class ListFichesComponent implements OnInit {
   faPlus = faPlus;
   sections: Section[] = [];
   tableauId: any;
-  sectionRealise: Section;
-  sectionEnCours: Section;
-  sectionAFaire: Section;
+  tableauNom: string;
+  formSearchFiche = new FormSearchFiche('');
 
   constructor(
     private modalService: NgbModal,
@@ -39,6 +40,11 @@ export class ListFichesComponent implements OnInit {
     private tableauService: TableauService,
     private routeActive: ActivatedRoute) {
 
+  }
+
+  rechercherFiche(nomFiche) {
+    console.log(nomFiche)
+    this.sections = this.ficheService.rechercherFiche(nomFiche, this.sections);
   }
 
   open(content) {
@@ -50,7 +56,6 @@ export class ListFichesComponent implements OnInit {
   }
 
   openModal(sectionId: any) {
-    console.log(sectionId)
     let modalRef = this.modalService.open(AddFicheComponent);
     modalRef.componentInstance.sectionId = sectionId;
   }
@@ -79,10 +84,13 @@ export class ListFichesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id = this.routeActive.snapshot.paramMap.get('tableauId');
-    this.tableauId = id;
+    let tableau = this.routeActive.snapshot.paramMap.get('tableauId');
+    this.tableauId = tableau.split('-')[0];
+    this.tableauNom = tableau.split('-')[1];
     this.getSections();
   }
+
+
 
   delete(id: any): void {
     this.ficheService.deleteFiche(id);
@@ -94,6 +102,12 @@ export class ListFichesComponent implements OnInit {
       data.sections.forEach(value => this.sections.push(value));
     })
   }
+
+  openAddSection(tableauId: any) {
+    let modalRef = this.modalService.open(AddSectionComponent);
+    modalRef.componentInstance.tableauId = tableauId;
+  }
+
 }
 
 @Component({
@@ -118,4 +132,6 @@ export class DialogDelete {
       this.dialogRef.close();
     });
   }
+
+
 }

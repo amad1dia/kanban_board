@@ -1,0 +1,27 @@
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  }
+  .info-color {
+    background-color: #33b5e5 !important;
+  }
+  .text-center {
+    text-align: center !important;
+  }
+  .white-text {
+    color: #fff !important;
+  }
+  
+  .pb-4, .py-4 {
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .pt-4, .py-4 {
+    padding-top: 1.5rem !important;
+  }
+  .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+  }
+  

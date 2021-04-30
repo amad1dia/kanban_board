@@ -8,8 +8,9 @@ export class Tableau {
     sections: Section[];
 }
 
-export interface Section {
+export class Section {
     id: any;
+    tableau: Tableau;
     status: string;
     fiches: Fiche[];
 }
