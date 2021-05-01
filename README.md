@@ -22,5 +22,10 @@ La commande suivante `ng serve --open` lance l'application et l'ouvre directemen
 
 ## Rendu de l'application
 ### Page d'accueil : Liste des tableaux
-
+![alt text](https://github.com/amad1dia/kanban_board/blob/master/tableaux.png?raw=true)
 ### Page des sections (A faire, en cours...) qui contient la liste des fiches kanban pour un tableau précis
+![alt text](https://github.com/amad1dia/kanban_board/blob/master/liste_fiche.png?raw=true)
+### Page d'ajout d'une fiche Kanban
+![alt text](https://github.com/amad1dia/kanban_board/blob/master/add_fiche.png?raw=true)
+### Page de details d'une fiche Kanban
+![alt text](https://github.com/amad1dia/kanban_board/blob/master/details_fiche.png?raw=true)
