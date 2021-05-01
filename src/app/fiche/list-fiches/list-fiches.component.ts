@@ -32,6 +32,7 @@ export class ListFichesComponent implements OnInit {
   tableauId: any;
   tableauNom: string;
   formSearchFiche = new FormSearchFiche('');
+  searchText: any
 
   constructor(
     private modalService: NgbModal,

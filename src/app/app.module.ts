@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,9 +23,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { UpdateTableauComponent } from './tableau/update-tableau/update-tableau.component';
 import { AddSectionComponent } from './add-section/add-section.component';
 import { SearchComponent } from './search/search.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     DetailsComponent,
     UpdateComponent,
@@ -34,9 +35,10 @@ import { SearchComponent } from './search/search.component';
     AddFicheComponent,
     AddTableauComponent,
     UpdateTableauComponent,
-      AddSectionComponent,
-      SearchComponent
-   ],
+    AddSectionComponent,
+    SearchComponent,
+    FilterPipe
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

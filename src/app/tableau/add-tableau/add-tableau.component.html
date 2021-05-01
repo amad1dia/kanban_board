@@ -1,19 +1,28 @@
-<mat-card-header class="info-color white-text text-center py-4">
-  <div mat-card-avatar class="example-header-image"></div>
-  <mat-card-title>Formulaire d'ajout de tableau</mat-card-title>
-</mat-card-header>
-<mat-card class="example-card">
-  <!-- Default form contact -->
-  <form [formGroup]="addTableauForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Enregistrer un nouveau</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activateModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <mat-card-header class="info-color white-text text-center py-4">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Formulaire d'ajout de tableau</mat-card-title>
+  </mat-card-header>
+  <mat-card class="example-card">
+    <!-- Default form contact -->
+    <form [formGroup]="addTableauForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
 
-    <!-- Name -->
-    <input type="text" formControlName="nom"  id="defaultContactFormName" class="form-control mb-4" placeholder="Nom du tableau">
-    <input type="text" formControlName="description"  id="defaultContactFormName" class="form-control mb-4" placeholder="Description">
-    <input type="date"  class="form-control mb-4" placeholder="01-01-2000"/>
+      <!-- Name -->
+      <input type="text" formControlName="nom" id="defaultContactFormName" class="form-control mb-4"
+        placeholder="Nom du tableau">
+      <input type="text" formControlName="description" id="defaultContactFormName" class="form-control mb-4"
+        placeholder="Description" maxlength="255">
+      <input type="date" class="form-control mb-4" placeholder="01-01-2000" />
 
 
-    <!-- Subject -->
-    <!-- <label>Subject</label>
+      <!-- Subject -->
+      <!-- <label>Subject</label>
   <select class="browser-default custom-select mb-4">
     <option value="" disabled>Choose option</option>
     <option value="1" selected>Feedback</option>
@@ -21,9 +30,12 @@
     <option value="3">Feature request</option>
     <option value="4">Feature request</option>
   </select> -->
-    <!-- Send button -->
-    <button mdbBtn color="info" block="true" type="submit">Send</button>
+      <!-- Send button -->
+      <button mdbBtn color="info" block="true" type="submit">Send</button>
 
-  </form>
-</mat-card>
-<!-- Default form contact -->
+    </form>
+  </mat-card>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="refresh()">Fermez</button>
+</div>

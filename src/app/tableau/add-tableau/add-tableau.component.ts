@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Tableau } from 'src/app/models/tableau';
 import { TableauService } from 'src/app/service/tableau.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-tableau',
@@ -17,8 +19,12 @@ export class AddTableauComponent implements OnInit {
     description: ['', Validators.required]
   });
 
-  constructor(private tableauService: TableauService,
-    private formBuilder: FormBuilder,) { }
+  constructor(
+    private tableauService: TableauService,
+    private formBuilder: FormBuilder,
+    public activateModal: NgbActiveModal,
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit(): void {
   }
@@ -34,11 +40,15 @@ export class AddTableauComponent implements OnInit {
     }, (error) => {
       console.log(error)
     })
-
   }
 
   onSubmit(): void {
     this.save();
     this.addTableauForm.reset();
+  }
+
+  refresh(): void {
+    this.activateModal.dismiss();
+    window.location.reload()
   }
 }

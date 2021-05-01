@@ -1,11 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tableau } from 'src/app/models/tableau';
 import {faPlus } from '@fortawesome/free-solid-svg-icons';
 import { TableauService } from 'src/app/service/tableau.service';
 import { UpdateTableauComponent } from '../update-tableau/update-tableau.component';
+import { AddTableauComponent } from '../add-tableau/add-tableau.component';
 
 export interface DialogData {
   id: any;
@@ -44,24 +45,24 @@ export class ListTableauxComponent implements OnInit {
     modalRef.componentInstance.tableau = tableau;
   }
 
+  openAddTableau() {
+    this.modalService.open(AddTableauComponent);
+  }
+
   openFiche(tableauId: any): void {
-    console.log("go to fiche")
     this.router.navigate(['/fiches', tableauId]);
   }
 
   getTableaux() {
     this.tableauService.getTableaux().subscribe((data) => {
-      console.log(data)
       this.tableaux = [];
-      data.forEach(value => this.tableaux.push(value))
-      console.log(this.tableaux)
+      data.forEach(value => this.tableaux.push(value));
     })
   }
 
   deleteTableau(id: any) {
     console.log(id)
     this.tableauService.deleteTableau(id).subscribe((response) => {
-      console.log(response);
       this.getTableaux();
     }, error => {
       this.getTableaux();

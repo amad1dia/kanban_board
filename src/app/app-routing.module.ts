@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListFichesComponent } from './fiche/list-fiches/list-fiches.component';
 
 const routes: Routes = [
-  { path: '', component: ListTableauxComponent },
+  { path: '',   redirectTo: '/tableaux', pathMatch: 'full' },
+  { path: 'tableaux', component: ListTableauxComponent },
   { path: 'fiches/:tableauId', component: ListFichesComponent },
 ];
 

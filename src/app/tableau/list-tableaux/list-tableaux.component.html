@@ -24,26 +24,11 @@
       </mat-card>
     </div>
     <div class="example-button-row">
-      <button class="plus" (click)="open(content)"><fa-icon [icon]="faPlus" class="fa-3x">
+      <button class="plus" (click)="openAddTableau()"><fa-icon [icon]="faPlus" class="fa-3x">
         </fa-icon>
       </button>
     </div>
   </div>
 </div>
-
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Enregistrer un nouveau</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <app-add-tableau></app-add-tableau>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermez</button>
-  </div>
-</ng-template>
 
 <hr>

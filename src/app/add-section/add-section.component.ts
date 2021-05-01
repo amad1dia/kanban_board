@@ -15,7 +15,7 @@ export class AddSectionComponent implements OnInit {
   @Input() tableauId;
 
   addSectionForm = this.formBuilder.group({
-    status: ['Choisir une section', Validators.required],
+    status: ['', Validators.required],
   });
 
   constructor(private sectionService: SectionService,
@@ -32,7 +32,7 @@ export class AddSectionComponent implements OnInit {
     tableau.id = this.tableauId;
     section.status = this.addSectionForm.value['status'];
     section.tableau = tableau;
-    console.log(section)
+    console.log(this.addSectionForm.value)
 
     this.sectionService.addSection(section).subscribe(reponse => {
       console.log("Enregistrer avec success");
@@ -57,5 +57,4 @@ export class AddSectionComponent implements OnInit {
         this.router.navigate([currentUrl]);
     });
   }
-
 }

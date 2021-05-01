@@ -11,7 +11,7 @@ import { FicheService } from 'src/app/service/fiche.service';
 })
 export class UpdateComponent implements OnInit {
 
-  @Input() fiche;
+  @Input() fiche: Fiche;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -27,8 +27,8 @@ export class UpdateComponent implements OnInit {
     newFiche.url = this.fiche.url;
     newFiche.lieu = this.fiche.lieu;
     newFiche.note = this.fiche.note;
-    newFiche.dureeTache = this.fiche.duree;
-
+    newFiche.dureeTache = this.fiche.dureeTache;
+    console.log(newFiche)
     this.ficheService.updateFiche(this.fiche.id, newFiche).subscribe(reponse => {
       console.log("Enregistrer avec success");
     }, (error) => {
